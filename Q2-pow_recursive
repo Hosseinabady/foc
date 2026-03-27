@@ -1,0 +1,27 @@
+def pow_recursive(x, n):
+    # Rule 1: x^0 = 1
+    if n == 0:
+        return 1
+    
+    # Rule 2: If n is even, x^n = (x^(n/2))^2
+    if n % 2 == 0:
+        half_power = pow_recursive(x, n // 2)  # // is floor division in Python
+        return half_power * half_power
+    
+    # Rule 3: If n is odd, x^n = x * x^(n-1)
+    else:
+        return x * pow_recursive(x, n - 1)
+    
+
+# Testing the function
+base = 2.0
+exponent = 10
+    
+result = pow_recursive(base, exponent)
+    
+print(f"Mathematical Rule Check:")
+print("-" * 25)
+print(f"{base} raised to the power of {exponent} is: {result}")
+    
+# Another test with an odd exponent
+print(f"3.0 raised to the power of 3 is: {pow_recursive(3.0, 3)}")

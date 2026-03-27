@@ -1,0 +1,33 @@
+def gcd(a, b):
+    """
+    Computes the Greatest Common Divisor using Euclid's algorithm.
+    Requirement: a >= b for the initial call.
+    """
+    # Rule: If b = 0, the gcd is a
+    if b == 0:
+        return a
+    
+    # Rule: gcd(a, b) = gcd(b, a % b)
+    # This works because a % b is always smaller than b.
+    return gcd(b, a % b)
+
+
+# Test cases based on your images
+test_cases = [
+    (15, 6),
+    (3, 4),   # Note: gcd(4, 3) fits a >= b better
+    (4, 2),
+    (12, 9),
+    (7, 0)
+]
+    
+print("Greatest Common Divisor (GCD) Results:")
+print("-" * 40)
+    
+for a, b in test_cases:
+    # To ensure the 'a >= b' requirement, we can sort the pair
+    num1, num2 = (a, b) if a >= b else (b, a)
+        
+    result = gcd(num1, num2)
+    print(f"gcd({num1}, {num2}) = {result}")
+

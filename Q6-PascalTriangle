@@ -1,0 +1,39 @@
+def c(n, i):
+    """
+    Recursive implementation of Pascal's Triangle C(n, i).
+    Calculates the ith number on the nth row.
+    """
+    # Basis/Boundary cases: C(n, -1), C(-1, n), and C(n, n+1) are 0
+    if i == -1 or n == -1 or i == n + 1:
+        return 0
+    
+    # Basis: The very top of the triangle is 1
+    elif i == 0 and n == 0:
+        return 1
+    
+    # Induction: C(n, i) = C(n-1, i-1) + C(n-1, i)
+    else:
+        return c(n - 1, i - 1) + c(n - 1, i)
+        
+        
+        
+# Specific test case from the image logic
+print("\nSpecific Checks:")
+print(f"C(4, 2) should be 6: Result = {c(4, 2)}")
+print(f"Out of bounds C(4, 5) should be 0: Result = {c(4, 5)}")
+    
+# Let's print the first 5 rows of Pascal's Triangle
+rows = 5
+    
+print("Pascal's Triangle:")
+print("-" * 20)
+    
+for n in range(rows):
+    # Create a string for each row to display it nicely
+    row_display = ""
+    for i in range(n + 1):
+        value = c(n, i)
+        row_display += f"{value} "
+    
+    # Centering the row for a triangle effect
+    print(row_display.center(20))   

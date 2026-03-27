@@ -1,0 +1,20 @@
+def print_bin(n):
+    """Recursively prints the binary representation of an integer."""
+    if n < 2:
+        print(n, end='') # 'end=""' prevents a new line after printing
+    else:
+        m = n // 2
+        r = n % 2 # r is the remainder of n/2
+        print_bin(m)
+        print(r, end='')
+
+# Test cases
+test_numbers = [6, 10, 13, 255]
+    
+print("Decimal to Binary Conversions:")
+print("-" * 30)
+    
+for num in test_numbers:
+    print(f"Decimal {num} in Binary is: ", end='')
+    print_bin(num)
+    print() # Print a new line after the binary sequence is finished

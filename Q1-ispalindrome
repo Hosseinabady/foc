@@ -1,0 +1,33 @@
+def is_palindrome(s):
+    slen = len(s)
+
+    # Base case: a null string or a single char is a palindrome
+    if slen == 0 or slen == 1:
+        return True
+    
+    # First and last characters
+    char_first = s[0]
+    char_last = s[-1] # s[-1] is a Pythonic way to get the last element
+    
+    # If they don't match, it can't be a palindrome
+    if char_first != char_last:
+        return False
+    
+    # "the bit in the middle"
+    # s[1:-1] takes everything from index 1 up to (but not including) the last index
+    rest = s[1:-1]
+    
+    return is_palindrome(rest)
+
+
+# Test cases
+test_words = ["radar", "hello", "level", "step on no pets", "python"]
+    
+print("Palindrome Check:")
+print("-" * 20)
+    
+for word in test_words:
+    # We use .replace(" ", "") to handle phrases with spaces if needed
+    result = is_palindrome(word.replace(" ", ""))
+    status = "Yes" if result else "No"
+    print(f"Is '{word}' a palindrome? {status}")
